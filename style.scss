@@ -1,0 +1,84 @@
+// https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
+$fg-color: #{"@theme_fg_color"};
+$bg-color: #{"@theme_bg_color"};
+
+// Catppuccin Mocha palette
+$base: #1e1e2e;
+$mantle: #181825;
+$crust: #11111b;
+
+$text: #cdd6f4;
+$subtext0: #a6adc8;
+$subtext1: #bac2de;
+
+$surface0: #313244;
+$surface1: #45475a;
+$surface2: #585b70;
+
+$overlay0: #6c7086;
+$overlay1: #7f849c;
+$overlay2: #9399b2;
+
+$blue: #89b4fa;
+$lavender: #b4befe;
+$sapphire: #74c7ec;
+$sky: #89dceb;
+$teal: #94e2d5;
+$green: #a6e3a1;
+$yellow: #f9e2af;
+$peach: #fab387;
+$maroon: #eba0ac;
+$red: #f38ba8;
+$mauve: #cba6f7;
+$pink: #f5c2e7;
+$flamingo: #f2cdcd;
+$rosewater: #f5e0dc;
+
+* {
+  font-family: "Monaspace Neon";
+  font-size: 13px;
+  min-height: 0;
+}
+
+window.Bar {
+  background: transparent;
+  color: $text;
+  margin: 0 0.7rem;
+
+  > centerbox {
+    margin: 5px;
+  }
+
+  box.container {
+    background-color: $surface0;
+    border-radius: 0.5rem;
+    padding: 0.3rem 0.4rem;
+  }
+
+  .workspaces {
+    button.workspace {
+      color: $lavender;
+      border-radius: 0.5rem;
+      background: transparent;
+      border: none;
+      transition: all 200ms;
+
+      &.active {
+        color: $sky;
+      }
+
+      &:hover {
+        color: $sapphire;
+      }
+    }
+  }
+
+  // Clock/menubutton (right side)
+  .time {
+    color: $blue;
+
+    * {
+      background: transparent;
+    }
+  }
+}

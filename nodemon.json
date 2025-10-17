@@ -1,0 +1,8 @@
+{
+  "watch": ["src", "config", ".", "style.scss", "widget/**/*"],
+  "ext": "ts,js,json,tsx",
+  "ignore": ["node_modules/**", "dist/**", "*.test.ts"],
+  "delay": "50ms",
+  "verbose": false,
+  "exec": "ags run app.ts"
+}

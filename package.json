@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "ags": "*",
+    "gnim": "*"
+  },
+  "prettier": {
+    "semi": false,
+    "tabWidth": 2
+  },
+  "scripts": {
+    "dev": "nodemon"
+  }
+}
