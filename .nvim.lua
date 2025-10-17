@@ -20,3 +20,18 @@ overseer.register_template({
 		}
 	end,
 })
+
+overseer.register_template({
+	name = "Generate Types",
+	builder = function()
+		return {
+			cmd = { "ags" },
+			args = {
+				"types",
+				"-u",
+				"-d",
+				".",
+			},
+		}
+	end,
+})
