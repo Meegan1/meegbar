@@ -4,7 +4,7 @@
     "gnim": "*"
   },
   "prettier": {
-    "semi": false,
+    "semi": true,
     "tabWidth": 2
   },
   "scripts": {

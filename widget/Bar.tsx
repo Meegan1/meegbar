@@ -1,15 +1,15 @@
-import app from "ags/gtk4/app"
-import { Astal, Gtk, Gdk } from "ags/gtk4"
-import { execAsync } from "ags/process"
-import { createPoll } from "ags/time"
-import { createBinding, For, With } from "ags"
-import Hyprland from "gi://AstalHyprland"
+import app from "ags/gtk4/app";
+import { Astal, Gtk, Gdk } from "ags/gtk4";
+import { execAsync } from "ags/process";
+import { createPoll } from "ags/time";
+import { createBinding, For, With } from "ags";
+import Hyprland from "gi://AstalHyprland";
 
 function getWorkspacesOnMonitor(workspaces: any[], gdkmonitor: Gdk.Monitor) {
   const geom =
     typeof (gdkmonitor as any).get_geometry === "function"
       ? (gdkmonitor as any).get_geometry()
-      : (gdkmonitor as any).geometry || null
+      : (gdkmonitor as any).geometry || null;
 
   const monitorNames = [
     (gdkmonitor as any).model,
@@ -23,13 +23,13 @@ function getWorkspacesOnMonitor(workspaces: any[], gdkmonitor: Gdk.Monitor) {
       : null,
   ]
     .filter(Boolean)
-    .map(String)
+    .map(String);
 
   return workspaces.filter((ws: any) => {
-    const m = ws.monitor || {}
+    const m = ws.monitor || {};
 
     if (geom && typeof m.x === "number" && typeof m.y === "number") {
-      if (m.x === geom.x && m.y === geom.y) return true
+      if (m.x === geom.x && m.y === geom.y) return true;
       if (
         typeof m.width === "number" &&
         typeof m.height === "number" &&
@@ -40,13 +40,13 @@ function getWorkspacesOnMonitor(workspaces: any[], gdkmonitor: Gdk.Monitor) {
           m.y >= geom.y + geom.height
         )
       ) {
-        return true
+        return true;
       }
     }
 
     if (m.id && monitorNames.length) {
-      if (monitorNames.includes(String(m.id))) return true
-      if (monitorNames.includes(String(m.name || ""))) return true
+      if (monitorNames.includes(String(m.id))) return true;
+      if (monitorNames.includes(String(m.name || ""))) return true;
     }
 
     if (m.id && ((gdkmonitor as any).id || (gdkmonitor as any).name)) {
@@ -54,21 +54,21 @@ function getWorkspacesOnMonitor(workspaces: any[], gdkmonitor: Gdk.Monitor) {
         String(m.id) ===
         String((gdkmonitor as any).id || (gdkmonitor as any).name)
       )
-        return true
+        return true;
     }
 
-    return false
-  })
+    return false;
+  });
 }
 
 function WorkspaceButton({
   workspace,
   hyprland,
 }: {
-  workspace: any
-  hyprland: any
+  workspace: any;
+  hyprland: any;
 }) {
-  const focusedWorkspace = createBinding(hyprland, "focusedWorkspace")
+  const focusedWorkspace = createBinding(hyprland, "focusedWorkspace");
 
   return (
     <With value={focusedWorkspace}>
@@ -87,22 +87,22 @@ function WorkspaceButton({
         </button>
       )}
     </With>
-  )
+  );
 }
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
-  const time = createPoll("", 1000, "date")
-  const { TOP, LEFT, RIGHT } = Astal.WindowAnchor
+  const time = createPoll("", 1000, "date");
+  const { TOP, LEFT, RIGHT } = Astal.WindowAnchor;
 
-  const hyprland = Hyprland.get_default()
+  const hyprland = Hyprland.get_default();
 
   const workspaces = createBinding(hyprland, "workspaces").as(
     (allWorkspaces) => {
       return getWorkspacesOnMonitor(allWorkspaces, gdkmonitor).sort(
         (a: any, b: any) => a.get_name() - b.get_name(),
-      )
+      );
     },
-  )
+  );
 
   return (
     <window
@@ -135,5 +135,5 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
         </box>
       </centerbox>
     </window>
-  )
+  );
 }
