@@ -91,7 +91,7 @@ function WorkspaceButton({
 }
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
-  const time = createPoll("", 1000, "date");
+  const time = createPoll("", 1000, ["date", "+%d/%m/%Y %H:%M"]);
   const { TOP, LEFT, RIGHT } = Astal.WindowAnchor;
 
   const hyprland = Hyprland.get_default();
