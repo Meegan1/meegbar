@@ -49,6 +49,8 @@ window.Bar {
     background: transparent;
     border: none;
     color: inherit;
+    min-width: 0;
+    padding: 0.3rem 0.65rem;
   }
 
   > centerbox {
