@@ -19,13 +19,15 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      pname = "my-shell";
+      pname = "meegbar";
       entry = "app.ts";
 
       astalPackages = with ags.packages.${system}; [
         io
         astal4 # or astal3 for gtk3
         hyprland
+        network
+        wireplumber
         # notifd tray wireplumber
       ];
 
