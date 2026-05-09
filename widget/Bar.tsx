@@ -98,7 +98,11 @@ function WorkspaceButton({
   );
 }
 
-export default function Bar(gdkmonitor: Gdk.Monitor) {
+export type BarProps = {
+  gdkmonitor: Gdk.Monitor;
+};
+
+export default function Bar({ gdkmonitor }: BarProps) {
   const pointer = Gdk.Cursor.new_from_name("pointer", null);
 
   const time = createPoll("", 1000, ["date", "+%d/%m/%Y %H:%M"]);

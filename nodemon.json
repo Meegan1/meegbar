@@ -4,5 +4,5 @@
   "ignore": ["node_modules/**", "dist/**", "*.test.ts"],
   "delay": "50ms",
   "verbose": false,
-  "exec": "ags run app.ts"
+  "exec": "ags run app.tsx"
 }
