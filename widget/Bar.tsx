@@ -34,7 +34,11 @@ function getWorkspacesOnMonitor(workspaces: any[], gdkmonitor: Gdk.Monitor) {
     .map(String);
 
   return workspaces.filter((ws: any) => {
+    if (!ws) return false;
+
     const m = ws.monitor || {};
+
+    if (!m) return false;
 
     if (geom && typeof m.x === "number" && typeof m.y === "number") {
       if (m.x === geom.x && m.y === geom.y) return true;
@@ -112,9 +116,11 @@ export default function Bar({ gdkmonitor }: BarProps) {
 
   const workspaces = createBinding(hyprland, "workspaces").as(
     (allWorkspaces) => {
-      return getWorkspacesOnMonitor(allWorkspaces, gdkmonitor).sort(
-        (a: any, b: any) => a.get_name() - b.get_name(),
-      );
+      if (!allWorkspaces) return [];
+
+      return getWorkspacesOnMonitor(allWorkspaces, gdkmonitor)
+        .filter(Boolean)
+        .sort((a: any, b: any) => a.get_name() - b.get_name());
     },
   );
 
