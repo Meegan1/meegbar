@@ -28,6 +28,7 @@
         hyprland
         network
         wireplumber
+        tray
         # notifd tray wireplumber
       ];
 

@@ -11,7 +11,7 @@ overseer.register_template({
 	name = "Develop",
 	builder = function()
 		return {
-			cmd = { "npm" },
+			cmd = { "bun" },
 			args = {
 				"run",
 				"dev",

@@ -12,6 +12,8 @@ import {
 import Hyprland from "gi://AstalHyprland";
 import Network from "gi://AstalNetwork";
 import WirePlumber from "gi://AstalWp";
+import { Tray } from "./Tray";
+import { AppConfig } from "../app";
 
 function getWorkspacesOnMonitor(workspaces: any[], gdkmonitor: Gdk.Monitor) {
   const geom =
@@ -113,9 +115,10 @@ function WorkspaceButton({
 
 export type BarProps = {
   gdkmonitor: Gdk.Monitor;
+  config: AppConfig;
 };
 
-export default function Bar({ gdkmonitor }: BarProps) {
+export default function Bar({ gdkmonitor, config }: BarProps) {
   const pointer = Gdk.Cursor.new_from_name("pointer", null);
 
   const time = createPoll("", 1000, ["date", "+%d/%m/%Y %H:%M"]);
@@ -168,6 +171,8 @@ export default function Bar({ gdkmonitor }: BarProps) {
     return `${name}: ${vol}%`;
   });
 
+  const showTray = createBinding(config, "showTray");
+
   return (
     <window
       visible
@@ -192,6 +197,10 @@ export default function Bar({ gdkmonitor }: BarProps) {
         </box>
 
         <box $type="end" spacing={16}>
+          <box visible={showTray} class="container" spacing={5}>
+            <Tray />
+          </box>
+
           <box class="container" spacing={5}>
             <button
               class="volume"
