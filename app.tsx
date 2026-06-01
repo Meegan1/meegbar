@@ -6,7 +6,7 @@ import GLib from "gi://GLib";
 import GObject, { register, property } from "gnim/gobject";
 
 @register()
-class AppConfig extends GObject.Object {
+export class AppConfig extends GObject.Object {
   @property(Boolean)
   showTray = false;
 }
