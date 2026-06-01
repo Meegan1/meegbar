@@ -8,7 +8,7 @@
     "tabWidth": 2
   },
   "scripts": {
-    "dev": "nodemon",
+    "dev": "MEEGBAR_DEV=true nodemon",
     "types": "ags types -u -d ."
   }
 }

@@ -2,9 +2,11 @@ import app from "ags/gtk4/app";
 import style from "./style.scss";
 import Bar from "./widget/Bar";
 import { createBinding, For, This } from "ags";
+import GLib from "gi://GLib";
 
 app.start({
-  instanceName: "meegbar",
+  instanceName:
+    GLib.getenv("MEEGBAR_DEV") !== "true" ? "meegbar" : "meegbar-dev",
 
   main() {
     app.apply_css(style);
