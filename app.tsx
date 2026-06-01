@@ -26,7 +26,7 @@ app.start({
       return;
     }
 
-    if (cmd === "help") {
+    if (cmd === "help" || cmd === "--help" || cmd === "-h") {
       response(
         "Available commands:\n" +
           "\n" +
